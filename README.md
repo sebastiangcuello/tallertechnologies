@@ -27,7 +27,7 @@ A fullstack Task Manager application built with .NET and React.
 
 1. Clone the repository
 ```bash
-git clone <https://github.com/sebastiangcuello/tallertechnologies>
+git clone https://github.com/sebastiangcuello/tallertechnologies
 cd Taller
 ```
 
