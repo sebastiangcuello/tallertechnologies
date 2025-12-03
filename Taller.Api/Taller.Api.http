@@ -1,0 +1,48 @@
+### 1. Base Variable Definition
+# We will use port 5000 defined in your launchSettings.json
+@Taller.Api_HostAddress = http://localhost:5000
+@BaseUrl = {{Taller.Api_HostAddress}}/api/tasks
+
+---
+
+### 2. Get All Tasks (GET /api/tasks)
+# Calls the [HttpGet] GetAll() method
+GET {{BaseUrl}}
+Accept: application/json
+
+###
+
+### 3. Create a New Task (POST /api/tasks)
+# Calls the [HttpPost] Create() method
+POST {{BaseUrl}}
+Content-Type: application/json
+
+{
+  "title": "Learn how to use .http files" 
+}
+
+###
+
+### 4. Update a Task (PUT /api/tasks/{id})
+# Calls the [HttpPut("{id:guid}")] Update() method
+# 
+# ATTENTION: You must replace '{{taskId}}' with an existing task ID (GUID).
+# First, execute the POST (request 3) and then the GET (request 2) to get an ID.
+@taskId = # Paste the GUID of a task you want to update here
+PUT {{BaseUrl}}/{{taskId}}
+Content-Type: application/json
+
+{
+  "completed": true
+}
+
+###
+
+### 5. Attempt to Update a Non-Existent Task (404)
+# To test error handling: Task not found
+PUT {{BaseUrl}}/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+
+{
+  "completed": false
+}
